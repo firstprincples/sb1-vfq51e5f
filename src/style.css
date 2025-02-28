@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Chat content styling */
+.chat-content {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+.chat-content h1 {
+  @apply text-2xl font-bold my-4;
+  color: inherit;
+}
+
+.chat-content h2 {
+  @apply text-xl font-semibold my-3;
+  color: inherit;
+}
+
+.chat-content h3 {
+  @apply text-lg font-semibold my-3;
+  color: inherit;
+}
+
+.chat-content p {
+  @apply my-2;
+}
+
+.chat-content ul,
+.chat-content ol {
+  @apply my-2 pl-6 space-y-1;
+}
+
+.chat-content ul {
+  @apply list-disc;
+}
+
+.chat-content ol {
+  @apply list-decimal;
+}
+
+.chat-content li {
+  @apply my-1;
+}
+
+.chat-content li > ul,
+.chat-content li > ol {
+  @apply mt-1 mb-0;
+}
+
+.chat-content mark {
+  @apply px-1 rounded;
+  background-color: rgba(234, 179, 8, 0.2);
+  color: inherit;
+}
+
+.chat-content strong {
+  @apply font-semibold;
+  color: inherit;
+}
+
+.chat-content em {
+  @apply italic;
+}
+
+.chat-content a {
+  @apply text-blue-600 dark:text-blue-400 underline;
+}
+
+.chat-content blockquote {
+  @apply pl-4 border-l-4 border-gray-300 dark:border-gray-700 italic my-2;
+}
+
+.chat-content hr {
+  @apply my-4 border-gray-300 dark:border-gray-700;
+}
+
+.chat-content table {
+  @apply w-full border-collapse my-4;
+}
+
+.chat-content th {
+  @apply bg-gray-100 dark:bg-gray-800 p-2 border border-gray-300 dark:border-gray-700 font-semibold text-left;
+}
+
+.chat-content td {
+  @apply p-2 border border-gray-300 dark:border-gray-700;
+}
+
+/* Math rendering styling */
+/* KaTeX styling */
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dark .katex {
+  color: #E5E7EB !important;
+}
+
+.dark .katex .katex-html {
+  color: #E5E7EB !important;
+}
+
+/* MathJax styling */
+mjx-container {
+  display: inline-block;
+  margin: 0 !important;
+  text-align: center;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0 !important;
+}
+
+.dark mjx-container {
+  color: #E5E7EB !important;
+}
+
+.dark mjx-container svg {
+  fill: #E5E7EB !important;
+}
+
+/* Math block styling */
+.math-block {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.math-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Note blocks styling */
+.note-block {
+  @apply my-4 p-4 rounded-lg overflow-hidden;
+}
+
+.note-block-header {
+  @apply flex items-center gap-2 font-medium mb-2;
+}
+
+.note-block-content {
+  @apply text-base leading-relaxed;
+}
+
+.note-block-content p {
+  @apply my-2;
+}
+
+.note-block-content ul {
+  @apply list-disc pl-6 my-2;
+}
+
+.note-block-content ol {
+  @apply list-decimal pl-6 my-2;
+}
+
+.note-block-content li {
+  @apply my-1;
+}
+
+/* Note block types */
+.note-block.important {
+  @apply bg-purple-50;
+}
+
+.dark .note-block.important {
+  @apply bg-purple-900/30;
+}
+
+.note-block.tip {
+  @apply bg-blue-50;
+}
+
+.dark .note-block.tip {
+  @apply bg-blue-900/30;
+}
+
+.note-block.example {
+  @apply bg-green-50;
+}
+
+.dark .note-block.example {
+  @apply bg-green-900/30;
+}
+
+.note-block.warning {
+  @apply bg-yellow-50;
+}
+
+.dark .note-block.warning {
+  @apply bg-yellow-900/30;
+}
+
+.note-block.steps {
+  @apply bg-indigo-50;
+}
+
+.dark .note-block.steps {
+  @apply bg-indigo-900/30;
+}
+
+/* Math error fallback */
+.math-error {
+  @apply bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200 text-sm;
+}
+
+.dark .math-error {
+  @apply bg-red-900/30 text-red-300 border-red-800;
+}
+
+/* Loading indicator */
+.thinking-dots::after {
+  content: '';
+  animation: thinking 1.5s infinite;
+}
+
+@keyframes thinking {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
