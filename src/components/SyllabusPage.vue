@@ -58,7 +58,7 @@ const adjustTextareaHeight = (event: Event) => {
   textarea.style.height = `${textarea.scrollHeight}px`;
 };
 
-const createNewChat = () => {
+const createNewChat = async () => {
   if (!newChatTitle.value.trim()) return;
   
   // Generate a more descriptive title based on the query
@@ -70,14 +70,9 @@ const createNewChat = () => {
     id: Date.now().toString(),
     title: chatTitle,
     subtitle: 'New conversation',
-    messages: [{
-      id: Date.now().toString(),
-      content: newChatTitle.value,
-      sender: 'user',
-      timestamp: Date.now()
-    }],
+    messages: [], // Start with empty messages array
     createdAt: Date.now(),
-    initialMessage: newChatTitle.value
+    initialMessage: newChatTitle.value // Store the initial message
   };
   
   // Update the syllabus with the new chat
@@ -86,8 +81,10 @@ const createNewChat = () => {
     chats: [newChat, ...props.syllabus.chats]
   };
   
-  // Update the syllabus and navigate to the chat
+  // Update the syllabus first
   emit('update', updatedSyllabus);
+  
+  // Navigate to the chat view - this will trigger the initial message processing
   emit('select-chat', props.syllabus.id, newChat);
   
   // Reset the input field
