@@ -10,7 +10,7 @@ const options = [
     id: 'simplify',
     icon: '🔍',
     title: 'Simplify It',
-    description: 'Hi Summarisdfsdfsvbbbbvvbbdffdsdfsdfsdze this concept for me'
+    description: 'Hi I am Back this concept for me'
   },
   {
     id: 'quiz',
