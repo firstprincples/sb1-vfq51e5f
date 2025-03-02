@@ -107,13 +107,13 @@ watch(() => processedContent.value, async () => {
         'max-w-[85%] rounded-lg p-4 shadow-sm',
         props.sender === 'assistant'
           ? (props.darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200')
-          : (props.darkMode ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white')
+          : (props.darkMode ? 'bg-blue-700 text-white border border-blue-600' : 'bg-gray-200 text-black border border-gray-300')
       ]">
       <div class="flex justify-between items-center mb-2">
-        <span :class="['text-xs', props.sender === 'user' ? 'text-white' : (props.darkMode ? 'text-gray-400' : 'text-gray-500')]">{{ props.sender }}</span>
-        <span :class="['text-xs', props.sender === 'user' ? 'text-white' : (props.darkMode ? 'text-gray-400' : 'text-gray-500')]">{{ formatTime(props.timestamp) }}</span>
+        <span :class="['text-xs', props.sender === 'user' ? (props.darkMode ? 'text-white' : 'text-black') : (props.darkMode ? 'text-gray-400' : 'text-gray-500')]">{{ props.sender }}</span>
+        <span :class="['text-xs', props.sender === 'user' ? (props.darkMode ? 'text-white' : 'text-black') : (props.darkMode ? 'text-gray-400' : 'text-gray-500')]">{{ formatTime(props.timestamp) }}</span>
       </div>
-      <div ref="contentRef" class="prose max-w-none break-words mb-3 chat-content" :class="[props.darkMode ? 'dark' : '', props.sender === 'user' ? 'text-white' : '']" v-html="processedContent"></div>
+      <div ref="contentRef" class="prose max-w-none break-words mb-3 chat-content" :class="[props.darkMode ? 'dark' : '', props.sender === 'user' ? (props.darkMode ? 'text-white' : 'text-black') : '']" v-html="processedContent"></div>
       <div v-if="props.sender === 'assistant' && !props.isThinking" class="flex gap-4 mt-2 pt-2 border-t" :class="props.darkMode ? 'border-gray-700' : 'border-gray-200'">
         <button :class="[props.darkMode ? 'text-gray-400 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600', isReading ? 'text-blue-500' : '']" title="Read aloud" @click="toggleReadAloud">
           <SpeakerWaveIcon class="h-5 w-5" />
@@ -160,22 +160,7 @@ watch(() => processedContent.value, async () => {
   color: #E5E7EB !important;
 }
 
-/* User message styling */
-.chat-content.text-white :deep(p),
-.chat-content.text-white :deep(h1),
-.chat-content.text-white :deep(h2),
-.chat-content.text-white :deep(h3),
-.chat-content.text-white :deep(h4),
-.chat-content.text-white :deep(h5),
-.chat-content.text-white :deep(h6),
-.chat-content.text-white :deep(li),
-.chat-content.text-white :deep(strong),
-.chat-content.text-white :deep(em),
-.chat-content.text-white :deep(blockquote),
-.chat-content.text-white :deep(span),
-.chat-content.text-white :deep(div) {
-  color: white !important;
-}
+/* User message styling overrides already applied in template via conditional classes */
 
 /* Thinking animation */
 .thinking-dots::after {
